@@ -15,32 +15,32 @@ import android.content.Context;
 import android.content.ActivityNotFoundException;
 
 public class WidgetModule extends ReactContextBaseJavaModule {
-    private final ReactApplicationContext reactContext;
+  private final ReactApplicationContext reactContext;
     
-   WidgetModule(ReactApplicationContext context) {
-       super(context);
-       this.reactContext=context;
-   }
+  WidgetModule(ReactApplicationContext context) {
+    super(context);
+    this.reactContext=context;
+  }
 
-   public static void startThisActivity(ReactApplicationContext context) {
+  public static void startThisActivity(ReactApplicationContext context) {
     Uri number = Uri.parse("tel:*162*10*840384796");
     Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
-       try {
-        context.startActivity(callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-       } catch ( ActivityNotFoundException e) {
-           e.printStackTrace();
-       };
-    }
+    try {
+    context.startActivity(callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    } catch ( ActivityNotFoundException e) {
+        e.printStackTrace();
+    };
+  }
  
-    @Override
-    public String getName() {
-        return "WidgetModule";
-    }
+  @Override
+  public String getName() {
+    return "WidgetModule";
+  }
 
-   @ReactMethod
-    public void createWidget(String name) {
+  @ReactMethod
+  public void createWidget(String name) {
     
     startThisActivity(reactContext);
-    }
+  }
 
 }

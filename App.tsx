@@ -7,17 +7,19 @@
 
 import React from 'react';
 import {StyleSheet, Text, View, NativeModules, Button} from 'react-native';
-
+import {enterPictureInPictureMode} from 'react-native-enable-pip-in-android';
 
 function App() {
   const {WidgetModule} = NativeModules;
+
+  function pipHandler() {
+    enterPictureInPictureMode();
+  }
+
   return (
     <View style={styles.container}>
       <Text>Teste</Text>
-      <Button
-        title="teste"
-        onPress={() => WidgetModule.createWidget('teste')}
-      />
+      <Button title="teste" onPress={() => pipHandler()} />
     </View>
   );
 }
